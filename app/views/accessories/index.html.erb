@@ -4,14 +4,16 @@
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
       <div class="card-trip-infos">
         <div>
-          <h2><% accessory.name %></h2>
-          <p><% accessory.description %></p>
+          <h2>Item: <%= accessory.name %></h2>
+          <p>Description: <%= accessory.description %></p>
+          <p>Address: <%= accessory.address %></p>
         </div>
-        <h2 class="card-trip-pricing"><% accessory.price %></h2>
+        <h2 class="card-trip-pricing"><%= accessory.price %> $</h2>
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
       </div>
     </div>
     <% if policy(accessory).edit? %>
-    <%= link_to "Update", edit_accessory_path(accessory) %>
+    <%= link_to "Update", edit_accessory_path(accessory), class: "btn btn-warning mt-4" %>
+    <%= link_to "Add a new fur accessory", new_accessory_path, class: "btn btn-warning mt-4" %>
   <% end %>
 <% end %>

@@ -1,5 +1,5 @@
 class AccessoriesController < ApplicationController
-  before_action :set_accessory, only: [:edit, :update, :destroy]
+  before_action :set_accessory, only: %i[edit update destroy]
 
   def index
     @accessories = Accessory.all
@@ -17,14 +17,14 @@ class AccessoriesController < ApplicationController
     @accessory.user = current_user
 
     if @accessory.save
-      redirect_to accessories_path, notice: "Restaurant was successfully created."
+      redirect_to accessories_path,
+                  notice: 'Accessory was successfully created.'
     else
       render :new
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @accessory.update(accessory_params)
@@ -37,7 +37,6 @@ class AccessoriesController < ApplicationController
 
     redirect_to accessories_path
   end
-
 
   private
 
