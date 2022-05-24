@@ -1,0 +1,13 @@
+<h1>Add a new accessory here!</h1>
+
+<%= simple_form_for(@accessory) do |f| %>
+
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <%= f.input :name %>
+  <%= f.input :price %>
+  <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.submit class: 'btn btn-warning' %>
+<% end %>

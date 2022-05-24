@@ -1,0 +1,7 @@
+mario:
+  email: 'mario@super.com'
+  encrypted_password: "$2a$12$u/Mg2hy2bOD6wxFvdCpXJOgDVif9CH32cqItHEvvRK1fwxDGFty0e" #123456
+
+six:
+  email: 'six@six.com'
+  encrypted_password: "$2a$12$u/Mg2hy2bOD6wxFvdCpXJOgDVif9CH32cqItHEvvRK1fwxDGFty0e" #123456
