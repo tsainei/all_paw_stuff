@@ -8,6 +8,7 @@ class AccessoriesController < ApplicationController
 
   def new
     @accessory = Accessory.new
+    authorize @accessory
   end
 
   def create
