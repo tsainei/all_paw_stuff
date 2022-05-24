@@ -1,5 +1,5 @@
-<div class="container m-3">
-  <h1>Paw Accessories</h1>
+<div class="container m-3 mx-auto">
+  <h1 class="text-center">Paw Accessories</h1>
   <div class="row">
     <% @accessories.each do |accessory| %>
       <div class="col">
@@ -15,8 +15,9 @@
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
           <% if policy(accessory).edit? %>
-            <%= link_to "Update", edit_accessory_path(accessory), class: "btn btn-warning mt-4" %>
-            <%= link_to "Add a new fur accessory", new_accessory_path, class: "btn btn-warning mt-4" %>
+            <%= link_to "Update", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
+            <%= link_to "Show", new_accessory_path, class: "btn btn-warning mt-1" %>
+            <%= link_to "Delete", accessory, method: :delete, class: 'btn btn-warning mt-1', form: { data: { turbo_confirm: 'Are you sure?' } } %>
           <% end %>
         </div>
       </div>
