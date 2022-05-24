@@ -1,5 +1,17 @@
+<h1>Accessories</h1>
 <% @accessories.each do |accessory| %>
-  <% if policy(accessory).edit? %>
+    <div class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-trip-infos">
+        <div>
+          <h2><% accessory.name %></h2>
+          <p><%accessory.description %></p>
+        </div>
+        <h2 class="card-trip-pricing"><% accessory.price %></h2>
+        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      </div>
+    </div>
+    <% if policy(accessory).edit? %>
     <%= link_to "Update", edit_accessory_path(accessory) %>
   <% end %>
 <% end %>
