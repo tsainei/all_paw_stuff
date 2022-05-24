@@ -1,0 +1,33 @@
+<div class= "container">
+  <%= form_for(@accessory) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price %>
+      <%= f.text_area :price, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_area :address, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+
+    <% unless f.object.new_record? %>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :completed, class: 'btn btn-warning mt-3'%> Completed
+        </label>
+      </div>
+    <% end %>
+
+    <%= f.submit class: 'btn btn-warning mt-3' %>
+  <% end %>
+</div>
