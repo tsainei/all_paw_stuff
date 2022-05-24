@@ -17,7 +17,7 @@ class AccessoriesController < ApplicationController
     @accessory.user = current_user
 
     if @accessory.save
-      redirect_to accessories_path
+      redirect_to accessories_path, notice: "Restaurant was successfully created."
     else
       render :new
     end
