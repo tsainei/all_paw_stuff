@@ -11,6 +11,7 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accesory_params)
+    authorize @accessory
     @accessory.save
 
     redirect_to accessories_path
