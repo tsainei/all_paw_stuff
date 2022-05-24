@@ -3,6 +3,7 @@ class AccessoriesController < ApplicationController
 
   def index
     @accessories = Accessory.all
+    @accessories = policy_scope(Accessory).order(created_at: :desc)
   end
 
   def new
