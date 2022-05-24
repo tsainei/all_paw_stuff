@@ -13,10 +13,14 @@ class AccessoriesController < ApplicationController
 
   def create
     @accessory = Accessory.new(accessory_params)
+    @accessory.user = current_user
     authorize @accessory
 
-    @accessory.save
-    redirect_to accessories_path
+    if @accessory.save
+      redirect_to accessories_path
+    else
+      render :new
+    end
   end
 
   def edit
