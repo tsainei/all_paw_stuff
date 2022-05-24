@@ -12,8 +12,23 @@
 </div>
 
 <div class="container">
-  <a class="btn btn-primary mt-4" href="#">Browse now</a>
+  <a class="btn btn-warning mt-4" href="#">Browse now</a>
   <% if policy(Accessory).create? %>
-  <%= link_to "Add a new fur accessory", new_accessory_path %>
+  <%= link_to "Add a new fur accessory", new_accessory_path, class: "btn btn-warning mt-4" %>
 <% end %>
+</div>
+
+<div class="container">
+  <div class="footer">
+    <div class="footer-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="footer-copyright">
+      This website is made with <i class="fa-solid fa-paw"></i> by Ni, Kerry & Rosanna
+    </div>
+  </div>
 </div>

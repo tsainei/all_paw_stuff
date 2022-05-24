@@ -1,6 +1,13 @@
+<div class= "container">
+  <h1>Add a new accessory here</h1>
 
-<%= render 'form', accessory: @accessory %>
+  <%= render 'form', accessory: @accessory %>
 
+  <hr>
+  <%= link_to accessories_path,  class: 'btn btn-warning mt-3' do %>
+    <i class="fa fa-history"></i> Back to list
+  <% end %>
+</div>
 <br>
 <%= link_to accessories_path do %>
   <i class="fa fa-history"></i> Take me back to fur accessories list
