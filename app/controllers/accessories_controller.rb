@@ -1,5 +1,5 @@
 class AccessoriesController < ApplicationController
-  before_action :set_, only: [:edit, :update, :destroy]
+  before_action :set_accessory, only: [:edit, :update, :destroy]
 
   def index
     @accessories = Accessory.all
@@ -12,10 +12,10 @@ class AccessoriesController < ApplicationController
   end
 
   def create
-    @accessory = Accessory.new(accesory_params)
+    @accessory = Accessory.new(accessory_params)
     authorize @accessory
-    @accessory.save
 
+    @accessory.save
     redirect_to accessories_path
   end
 
