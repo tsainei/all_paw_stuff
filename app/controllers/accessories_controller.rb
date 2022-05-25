@@ -9,6 +9,13 @@ class AccessoriesController < ApplicationController
       @accessories = Accessory.all
       @accessories = policy_scope(Accessory).order(created_at: :desc)
     end
+
+    @markers = @accessories.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   def new
