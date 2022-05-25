@@ -1,9 +1,14 @@
 class AccessoriesController < ApplicationController
-  before_action :set_accessory, only: %i[edit update destroy]
+  before_action :set_accessory, only: %i[show edit update destroy]
 
   def index
-    @accessories = Accessory.all
-    @accessories = policy_scope(Accessory).order(created_at: :desc)
+    if params[:query].present?
+      @query = params[:query]
+      @accessoriess = Accessory.where("name ILIKE ?","%#{params[:query]}%")
+    else
+      @accessories = Accessory.all
+      @accessories = policy_scope(Accessory).order(created_at: :desc)
+    end
   end
 
   def new
@@ -24,7 +29,11 @@ class AccessoriesController < ApplicationController
     end
   end
 
-  def edit; end
+  def show
+  end
+
+  def edit
+  end
 
   def update
     @accessory.update(accessory_params)
