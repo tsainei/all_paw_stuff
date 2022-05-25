@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'reservations/index'
+  get 'reservations/show'
+  get 'reservations/new'
+  get 'reservations/create'
+  get 'reservations/destroy'
+  get 'reservations/update'
+  get 'reservations/edit'
   devise_for :users
   root to: 'pages#home'
   resources :accessories
