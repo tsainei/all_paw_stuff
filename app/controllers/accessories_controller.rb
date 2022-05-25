@@ -33,10 +33,12 @@ class AccessoriesController < ApplicationController
   end
 
   def edit
+    authorize @accessory
   end
 
   def update
     @accessory.update(accessory_params)
+    authorize @accessory
 
     redirect_to accessories_path
   end
