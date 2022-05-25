@@ -12,10 +12,8 @@
 </div>
 
 <div class="container">
-  <a class="btn btn-warning mt-4" href="#">Browse now</a>
+  <%= link_to "Browse now", accessories_path, class: "btn btn-warning mt-4" %>
   <% if policy(Accessory).create? %>
   <%= link_to "Add a new fur accessory", new_accessory_path, class: "btn btn-warning mt-4" %>
 <% end %>
 </div>
-
-
