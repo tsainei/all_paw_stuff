@@ -14,10 +14,12 @@
             <h2 class="card-trip-pricing">CHF <%= accessory.price %></h2>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
+
+          <%= link_to 'More info', accessory_path(accessory), class: "btn btn-warning mt-1"  %>
+
           <% if policy(accessory).edit? %>
-            <%= link_to 'More info', accessory_path(accessory), class: "btn btn-warning mt-1"  %>
             <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
-            <%= link_to "Delete", accessory, method: :delete, class: 'btn btn-warning mt-1', form: { data: { turbo_confirm: 'Are you sure?' } } %>
+            <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
           <% end %>
         </div>
       </div>
