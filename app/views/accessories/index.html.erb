@@ -1,17 +1,25 @@
-<h1>Accessories</h1>
-<% @accessories.each do |accessory| %>
-    <div class="card-trip">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-      <div class="card-trip-infos">
-        <div>
-          <h2><% accessory.name %></h2>
-          <p><% accessory.description %></p>
+<div class="container m-3 mx-auto">
+  <h1 class="text-center">Paw Accessories</h1>
+  <div class="row">
+    <% @accessories.each do |accessory| %>
+      <div class="col">
+        <div class="card-trip mb-4 p-3" style="width: 18rem;">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <div class="card-trip-infos">
+            <div>
+              <h2>Item: <%= accessory.name %></h2>
+              <p>Description: <%= accessory.description %></p>
+              <p>Address: <%= accessory.address %></p>
+            </div>
+            <h2 class="card-trip-pricing"><%= accessory.price %> $</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+          <% if policy(accessory).edit? %>
+            <%= link_to "Update", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
+            <%= link_to "Show", new_accessory_path, class: "btn btn-warning mt-1" %>
+            <%= link_to "Delete", accessory, method: :delete, class: 'btn btn-warning mt-1', form: { data: { turbo_confirm: 'Are you sure?' } } %>
+          <% end %>
         </div>
-        <h2 class="card-trip-pricing"><% accessory.price %></h2>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
       </div>
-    </div>
-    <% if policy(accessory).edit? %>
-    <%= link_to "Update", edit_accessory_path(accessory) %>
-  <% end %>
-<% end %>
+    <% end %>
+  </div>

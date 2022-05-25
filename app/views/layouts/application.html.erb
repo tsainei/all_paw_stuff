@@ -5,21 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= favicon_link_tag asset_path('footprint.png') %>
   </head>
-
   <body>
-  <div>
     <%= render 'shared/navbar' %>
-     <div class="alert alert-success">
-    <%= notice %>
-  </div>
     <%= yield %>
     <%= render 'shared/footer' %>
-    </div>
   </body>
 </html>
