@@ -42,6 +42,7 @@ class AccessoriesController < ApplicationController
   end
 
   def destroy
+    authorize @accessory
     @accessory.destroy
 
     redirect_to accessories_path
