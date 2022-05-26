@@ -11,8 +11,11 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.accessory = @accessory
-    authorize @reservation
     @reservation.user = current_user
+    @reservation.total_price =
+      @accessory.price *
+        ((@reservation.end_date - @reservation.start_date).to_i)
+    authorize @reservation
     if @reservation.save
       redirect_to mine_reservations_path
     else
@@ -32,14 +35,13 @@ class ReservationsController < ApplicationController
 
   def update
     authorize @reservation
-   end
+  end
 
   def edit
     authorize @reservation
   end
 
   def set_reservation
-
     @reservation = Reservation.find(params[:id])
   end
 
