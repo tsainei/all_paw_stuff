@@ -11,11 +11,14 @@ class AccessoriesController < ApplicationController
       @accessories = policy_scope(Accessory).order(created_at: :desc)
     end
 
-    @markers = @accessories.geocoded.map do |accessory|
+    @accessories = Accessory.geocoded
+
+    @markers = @accessories.map do |accessory|
       {
         lat: accessory.latitude,
         lng: accessory.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { accessory: accessory })
+        info_window: render_to_string(partial: "info_window", locals: { accessory: accessory }),
+        image_url: helpers.asset_url("item_map.png")
       }
     end
   end
