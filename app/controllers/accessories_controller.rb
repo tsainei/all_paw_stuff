@@ -11,10 +11,11 @@ class AccessoriesController < ApplicationController
       @accessories = policy_scope(Accessory).order(created_at: :desc)
     end
 
-    @markers = @accessories.geocoded.map do |flat|
+    @markers = @accessories.geocoded.map do |accessory|
       {
-        lat: flat.latitude,
-        lng: flat.longitude
+        lat: accessory.latitude,
+        lng: accessory.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { accessory: accessory })
       }
     end
   end
