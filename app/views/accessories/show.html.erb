@@ -1,14 +1,16 @@
-<h1>More details about your selected fur accessory here</h1>
-
-
-<div class="card-trip">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-  <div class="card-trip-infos">
-    <div>
-      <h2><%= @accessory.name %></h2>
-      <p><%= @accessory.description %></p>
+<div class="container m-3 mx-auto">
+  <h1 class="text-center "><%= @accessory.name %></h1>
+  <div class="card-trip mx-auto mb-4 p-3" style="width: 50rem;">
+    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" style="height: 50%;"/>
+    <div class="card-trip-infos">
+      <div>
+        <p>Description: <%= @accessory.description %></p>
+        <p>Address: <%= @accessory.address %></p>
+      </div>
+      <h2 class="card-trip-pricing"><%= @accessory.price %> CHF/day</h2>
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+      <%# /accessories/:accessory_id/reservations/new %>
     </div>
-    <h2 class="card-trip-pricing">CHF <%= @accessory.price %></h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+ <%= link_to "Book Me Now", new_accessory_reservation_path(@accessory), class: "btn btn-warning mt-1" %>
   </div>
 </div>

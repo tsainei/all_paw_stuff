@@ -2,16 +2,17 @@
   <h1 class="text-center">Paw Accessories</h1>
   <div class="row">
     <% @accessories.each do |accessory| %>
-      <div class="col">
+      <div class="col-sm">
         <div class="card-trip mb-4 p-3" style="width: 18rem;">
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
           <div class="card-trip-infos">
             <div>
               <h2>Item: <%= accessory.name %></h2>
-              <%# <p>Description: <%= accessory.description </p> %>
-              <%#  <p>Address: <%= accessory.address </p> %>
+
+              <p>Description: <%= accessory.description %></p>
+
             </div>
-            <h2 class="card-trip-pricing">CHF <%= accessory.price %></h2>
+            <h2 class="card-trip-pricing"><%= accessory.price %>CHF/day</h2>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
           </div>
 
