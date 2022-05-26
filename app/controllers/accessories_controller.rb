@@ -1,5 +1,6 @@
 class AccessoriesController < ApplicationController
   before_action :set_accessory, only: %i[show edit update destroy]
+  skip_before_action :authenticate_user!, :only => [:index]
 
   def index
     if params[:query].present?
