@@ -37,6 +37,7 @@ class AccessoriesController < ApplicationController
   end
 
   def show
+    authorize @accessory
   end
 
   def edit
