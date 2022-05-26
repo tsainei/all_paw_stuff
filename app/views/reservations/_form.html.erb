@@ -1,10 +1,8 @@
-<%= simple_form_for(@accessory) do |f| %>
+<%= simple_form_for [@accessory, @reservation] do |f| %>
 <%= f.error_notification %>
 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <%= f.input :name %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.input :description %>
+  <%= f.input :start_date, as: :date, html5: true %>
+  <%= f.input :end_date, as: :date, html5: true %>
   <%= f.submit class: 'btn btn-warning' %>
 <% end %>

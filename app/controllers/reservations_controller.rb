@@ -9,13 +9,18 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.new(reservation_params)
-    authorize @reservation
+    @reservation.accessory = @accessory
     @reservation.user = current_user
+    if @reservation.save
+      redirect_to @accessory
+    else
+      render :new
+    end
   end
 
   def destroy
     @reservation.destroy
-    redirect_to @accessory.index, notice: 'Bookmark was successfully destroyed.'
+    redirect_to @accessory
   end
 
   def update; end
@@ -30,7 +35,7 @@ class ReservationsController < ApplicationController
   def reservation_params
     params
       .require(:reservation)
-      .permit(:user_id, :accessory_id, :start_date, :end_date)
+      .permit(:start_date, :end_date)
   end
 
   def set_accessory
