@@ -20,6 +20,10 @@ class AccessoryPolicy < ApplicationPolicy
     # - user:   the `current_user` signed in with Devise.
   end
 
+  def show?
+    return true
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
