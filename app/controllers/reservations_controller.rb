@@ -35,5 +35,6 @@ class ReservationsController < ApplicationController
 
   def set_accessory
     @accessory = Accessory.find(params[:accessory_id])
+    authorize @accessory
   end
 end
