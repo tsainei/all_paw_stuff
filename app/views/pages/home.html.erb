@@ -7,13 +7,14 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://image.shutterstock.com/image-photo/bowl-food-cat-dog-accessories-260nw-1150047029.jpg); ">
   <div class="container">
     <h1>The place for all pet accessories</h1>
-    <p>Huge variety of accessories to choose from!</p>
+    <p>Need some pet accessories for short term? Don't want to buy?</p>
+    <p>Look no further, <strong>RENT</strong> them here! We have a huge variety of fur accessories to cover all your needs.</p>
   </div>
 </div>
 
 <div class="container">
-  <%= link_to "Browse now", accessories_path, class: "btn btn-warning mt-4" %>
+  <%= link_to "Browse fur accessories", accessories_path, class: "btn btn-warning mt-4" %>
   <% if policy(Accessory).create? %>
-  <%= link_to "Add a new fur accessory", new_accessory_path, class: "btn btn-warning mt-4" %>
+  <%= link_to "List a fur accessory for rental", new_accessory_path, class: "btn btn-warning mt-4" %>
 <% end %>
 </div>
