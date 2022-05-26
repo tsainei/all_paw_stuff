@@ -4,13 +4,13 @@
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" style="height: 50%;"/>
     <div class="card-trip-infos">
       <div>
-              <p>Description: <%= @accessory.description %></p>
-              <p>Address: <%= @accessory.address %></p>
+        <p>Description: <%= @accessory.description %></p>
+        <p>Address: <%= @accessory.address %></p>
       </div>
       <h2 class="card-trip-pricing"><%= @accessory.price %> CHF/day</h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-
-    </div> <%= link_to "Book Me Now", accessory_path(@accessory), class: "btn btn-warning mt-1" %>
-
+      <%# /accessories/:accessory_id/reservations/new %>
+    </div>
+ <%= link_to "Book Me Now", new_accessory_reservation_path(@accessory), class: "btn btn-warning mt-1" %>
   </div>
 </div>
