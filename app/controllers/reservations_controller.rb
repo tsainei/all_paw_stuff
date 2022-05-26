@@ -5,37 +5,47 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    authorize @reservation
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.accessory = @accessory
+    authorize @reservation
     @reservation.user = current_user
     if @reservation.save
-      redirect_to @accessory
+      redirect_to mine_reservations_path
     else
       render :new
     end
   end
 
+  def mine
+    @reservations = policy_scope(Reservation).where(params[current_user.id])
+  end
+
   def destroy
+    authorize @reservation
     @reservation.destroy
     redirect_to @accessory
   end
 
-  def update; end
+  def update
+    authorize @reservation
+   end
 
-  def edit; end
+  def edit
+    authorize @reservation
+  end
 
   def set_reservation
+
     @reservation = Reservation.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def reservation_params
-    params
-      .require(:reservation)
-      .permit(:start_date, :end_date)
+    params.require(:reservation).permit(:start_date, :end_date)
   end
 
   def set_accessory
