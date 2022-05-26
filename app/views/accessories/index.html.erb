@@ -18,7 +18,7 @@
           <%= link_to 'More info', accessory_path(accessory), class: "btn btn-warning mt-1"  %>
 
           <% if policy(accessory).edit? %>
-            <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
+            <%= link_to "Edit", accessory_path(accessory), class: "btn btn-warning mt-1" %>
             <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
           <% end %>
         </div>
