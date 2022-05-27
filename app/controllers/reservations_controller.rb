@@ -5,22 +5,41 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    authorize @reservation
   end
 
   def create
     @reservation = Reservation.new(reservation_params)
-    authorize @reservation
+    @reservation.accessory = @accessory
     @reservation.user = current_user
+    @reservation.total_price =
+      @accessory.price *
+        ((@reservation.end_date - @reservation.start_date).to_i)
+    authorize @reservation
+    if @reservation.save
+      redirect_to mine_reservations_path
+    else
+      render :new
+    end
+  end
+
+  def mine
+    @reservations = policy_scope(Reservation).where(params[current_user.id])
   end
 
   def destroy
+    authorize @reservation
     @reservation.destroy
-    redirect_to @accessory.index, notice: 'Bookmark was successfully destroyed.'
+    redirect_to @accessory
   end
 
-  def update; end
+  def update
+    authorize @reservation
+  end
 
-  def edit; end
+  def edit
+    authorize @reservation
+  end
 
   def set_reservation
     @reservation = Reservation.find(params[:id])
@@ -28,9 +47,7 @@ class ReservationsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def reservation_params
-    params
-      .require(:reservation)
-      .permit(:user_id, :accessory_id, :start_date, :end_date)
+    params.require(:reservation).permit(:start_date, :end_date)
   end
 
   def set_accessory

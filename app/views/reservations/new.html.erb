@@ -1,2 +1,8 @@
-<h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+<div class= "container">
+<h1>Book it for your furbaby</h1>
+  <%= render 'form', accessory: @accessory %>
+  <hr>
+  <%= link_to accessories_path,  class: 'btn btn-warning mt-3' do %>
+    <i class="fa fa-history"></i> Take me back to fur accessories list
+  <% end %>
+</div>
