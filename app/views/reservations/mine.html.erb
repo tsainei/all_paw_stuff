@@ -4,8 +4,9 @@
       <div class="media-body">
         <% @reservations.each do |reservation|%>
           <div class= "col">
-            <img class="mr-3" src="..." alt="Generic placeholder image">
-
+ <% if reservation.accessory.photo.present? %>
+        <%= cl_image_tag reservation.accessory.photo.key, height: 300, width: 400, crop: :fit %>
+      <% end %>
               <p>Start Date: <%= reservation.start_date %></p>
              <p>End Date: <%= reservation.end_date %></p>
              <p>Total Price: <%= reservation.total_price %></p>

@@ -31,7 +31,7 @@ class AccessoriesController < ApplicationController
   end
 
   def mine
-    @accessories = policy_scope(Accessory).where(params[user: current_user])
+    @accessories = policy_scope(Accessory).where(user: current_user)
   end
 
   def new
