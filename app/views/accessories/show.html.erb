@@ -21,10 +21,12 @@
 
 <br>
 
-    <div class= "col mt-4 position-sticky" style="width: 100%; height: 600px;"
-        data-controller="mapbox"
-        data-mapbox-markers-value="<%= @markers.to_json %>"
-        data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+  <div class= "col mt-4 position-sticky" style="width: 100%; height: 600px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+    <%= link_to accessories_path,  class: 'btn btn-warning mt-3' do %>
+    <i class="fa fa-history"></i> Back to list
+    <% end %>
 </div>
