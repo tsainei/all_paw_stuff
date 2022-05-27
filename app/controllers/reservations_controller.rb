@@ -26,7 +26,7 @@ class ReservationsController < ApplicationController
   end
 
   def mine
-    @reservations = policy_scope(Reservation).where(params[current_user])
+    @reservations = policy_scope(Reservation).where(params[user: current_user])
   end
 
   def destroy
