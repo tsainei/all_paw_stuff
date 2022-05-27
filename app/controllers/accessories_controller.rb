@@ -54,22 +54,20 @@ class AccessoriesController < ApplicationController
 
   def show
     authorize @accessory
-    @accessories = Accessory.geocoded
+    # @accessories = Accessory.geocoded
     @markers =
-      @accessories.map do |accessory|
-        {
-          lat: accessory.latitude,
-          lng: accessory.longitude,
-          info_window:
-            render_to_string(
-              partial: 'info_window',
-              locals: {
-                accessory: accessory,
-              },
-            ),
-          image_url: helpers.asset_url('item_map.png'),
-        }
-      end
+    [{
+      lat: @accessory.latitude,
+      lng: @accessory.longitude,
+      info_window:
+        render_to_string(
+          partial: 'info_window',
+          locals: {
+          accessory: @accessory,
+          },
+        ),
+      image_url: helpers.asset_url('item_map.png'),
+    }]
   end
 
   def edit
