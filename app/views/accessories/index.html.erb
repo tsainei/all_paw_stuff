@@ -4,7 +4,9 @@
     <% @accessories.each do |accessory| %>
       <div class= "col">
         <div class="card-trip mt-4 p-3" style="width: 18rem;">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <% if accessory.photo.present? %>
+            <%= cl_image_tag(accessory.photo.key, width: 400, height: 300, crop: :fit) %>
+          <% end %>
           <div class="card-trip-infos">
             <div>
               <h2>Item: <%= accessory.name %></h2>

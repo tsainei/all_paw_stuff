@@ -93,7 +93,7 @@ class AccessoriesController < ApplicationController
   private
 
   def accessory_params
-    params.require(:accessory).permit(:name, :price, :address, :description)
+    params.require(:accessory).permit(:name, :price, :address, :description, :photo)
   end
 
   def set_accessory

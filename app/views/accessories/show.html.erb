@@ -3,7 +3,9 @@
   <div class="row">
     <div class= "col">
       <div class="card-trip mx-auto mb-4 mt-4 p-3" style="width: 45rem;">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" style="height: 50%;"/>
+      <% if @accessory.photo.present? %>
+        <%= cl_image_tag @accessory.photo.key, height: 300, width: 400, crop: :fit %>
+      <% end %>
         <div class="card-trip-infos">
           <div>
             <p>Description: <%= @accessory.description %></p>
