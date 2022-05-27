@@ -1,11 +1,11 @@
 class AccessoriesController < ApplicationController
   before_action :set_accessory, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, :only => [:index]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     if params[:query].present?
       @query = params[:query]
-      @accessoriess = Accessory.where("name ILIKE ?","%#{params[:query]}%")
+      @accessoriess = Accessory.where('name ILIKE ?', "%#{params[:query]}%")
     else
       @accessories = Accessory.all
       @accessories = policy_scope(Accessory).order(created_at: :desc)
@@ -13,14 +13,25 @@ class AccessoriesController < ApplicationController
 
     @accessories = Accessory.geocoded
 
-    @markers = @accessories.map do |accessory|
-      {
-        lat: accessory.latitude,
-        lng: accessory.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { accessory: accessory }),
-        image_url: helpers.asset_url("item_map.png")
-      }
-    end
+    @markers =
+      @accessories.map do |accessory|
+        {
+          lat: accessory.latitude,
+          lng: accessory.longitude,
+          info_window:
+            render_to_string(
+              partial: 'info_window',
+              locals: {
+                accessory: accessory,
+              },
+            ),
+          image_url: helpers.asset_url('item_map.png'),
+        }
+      end
+  end
+
+  def mine
+    @accessories = policy_scope(Accessory).where(params[current_user.id])
   end
 
   def new
@@ -44,14 +55,21 @@ class AccessoriesController < ApplicationController
   def show
     authorize @accessory
     @accessories = Accessory.geocoded
-    @markers = @accessories.map do |accessory|
-      {
-        lat: accessory.latitude,
-        lng: accessory.longitude,
-        info_window: render_to_string(partial: "info_window", locals: { accessory: accessory }),
-        image_url: helpers.asset_url("item_map.png")
-      }
-    end
+    @markers =
+      @accessories.map do |accessory|
+        {
+          lat: accessory.latitude,
+          lng: accessory.longitude,
+          info_window:
+            render_to_string(
+              partial: 'info_window',
+              locals: {
+                accessory: accessory,
+              },
+            ),
+          image_url: helpers.asset_url('item_map.png'),
+        }
+      end
   end
 
   def edit

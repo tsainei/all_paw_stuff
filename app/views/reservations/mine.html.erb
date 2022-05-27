@@ -1,4 +1,8 @@
-
-<% @reservations.each do |reservation|%>
-<%= reservation.start_date %>
-<% end %>
+<div class= "container m-3 p-3">
+  <% @reservations.each do |reservation|%>
+    <%= reservation.start_date %>
+    <%= reservation.end_date %>
+    <%= reservation.total_price %>
+    <%= reservation.accessory.user.email %>
+  <% end %>
+</div>
