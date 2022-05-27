@@ -4,13 +4,13 @@
       <div class="media-body">
         <% @accessories.each do |accessory|%>
           <div class= "col m-3">
-            <% if policy(accessory).edit? %>
-              <img class="mr-3" src="..." alt="Generic placeholder image">
-              <p>Accessory: <%= accessory.name %></p>
-              <p>Price: <%= accessory.price %> CHF</p>
-              <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
-              <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
+            <% if accessory.photo.present? %>
+              <%= cl_image_tag accessory.photo.key, height: 300, width: 400, crop: :fit %>
             <% end %>
+            <p>Accessory: <%= accessory.name %></p>
+            <p>Price: <%= accessory.price %> CHF</p>
+            <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
+            <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
           </div>
         <% end %>
       </div>
