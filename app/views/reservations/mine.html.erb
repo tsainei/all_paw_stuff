@@ -4,11 +4,13 @@
       <div class="media-body">
         <% @reservations.each do |reservation|%>
           <div class= "col">
-           <img class="mr-3" src="..." alt="Generic placeholder image">
-            <%= reservation.start_date %>
-            <%= reservation.end_date %>
-            <%= reservation.total_price %>
-            <%= reservation.accessory.user.email %>
+            <img class="mr-3" src="..." alt="Generic placeholder image">
+
+              <p>Start Date: <%= reservation.start_date %></p>
+             <p>End Date: <%= reservation.end_date %></p>
+             <p>Total Price: <%= reservation.total_price %></p>
+            <p>Owner: <%= reservation.accessory.user.email %></p>
+              <%= link_to 'More info', accessory_path(reservation.accessory), class: "btn btn-warning mt-1"  %>
           </div>
         <% end %>
       </div>

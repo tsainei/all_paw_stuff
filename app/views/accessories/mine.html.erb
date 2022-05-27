@@ -3,10 +3,14 @@
     <div class="media">
       <div class="media-body">
         <% @accessories.each do |accessory|%>
-         <div class= "col">
+          <div class= "col m-3">
+            <% if policy(accessory).edit? %>
               <img class="mr-3" src="..." alt="Generic placeholder image">
-          <%= accessory.name %>
-          <%= accessory.price %>
+              <p>Accessory: <%= accessory.name %></p>
+              <p>Price: <%= accessory.price %></p>
+              <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
+              <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
+            <% end %>
           </div>
         <% end %>
       </div>
