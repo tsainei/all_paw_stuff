@@ -16,9 +16,6 @@ class ReservationsController < ApplicationController
     @reservation.user = current_user
     authorize @reservation
     if @reservation.save
-      @reservation.total_price = @accessory.price *
-        ((@reservation.end_date - @reservation.start_date).to_i)
-      @reservation.save!
       redirect_to mine_reservations_path
     else
       render :new
