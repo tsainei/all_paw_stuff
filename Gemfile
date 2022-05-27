@@ -66,3 +66,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'pundit'
 gem 'geocoder'
+gem 'cloudinary', '~> 1.16.0'
