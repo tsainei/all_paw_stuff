@@ -1,9 +1,9 @@
 <div class="container m-3 mx-auto">
   <div class="row">
-    <div class="media">
-      <div class="media-body">
-        <% @accessories.each do |accessory|%>
-          <div class= "col m-3">
+    <% @accessories.each do |accessory|%>
+    <div class= "col-sm m-3">
+      <div class="media">
+        <div class="media-body">
             <% if accessory.photo.present? %>
               <%= cl_image_tag accessory.photo.key, height: 300, width: 400, crop: :fit %>
             <% end %>
@@ -12,8 +12,8 @@
             <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
             <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
           </div>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
