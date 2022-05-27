@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: :destroy
   before_action :set_accessory, only: %i[new create]
+
   def show; end
 
   def new

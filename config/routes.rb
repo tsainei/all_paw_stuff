@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: 'pages#home'
-  resources :accessories, except: %i[edit update] do
+  resources :accessories do
     resources :reservations, only: %i[new create]
     get :mine, on: :collection
   end
