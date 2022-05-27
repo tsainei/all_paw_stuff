@@ -19,8 +19,11 @@
             <%= image_tag "https://cdn-icons-png.flaticon.com/512/1596/1596810.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Add your fur accessory",new_accessory_path, class: "dropdown-item" %>
-              <%= link_to "Your Accessories",mine_accessories_path, class: "dropdown-item" %>
+
+            <%= link_to "Your Accessories",mine_accessories_path, class: "dropdown-item" %>
               <%= link_to "Your reservations",mine_reservations_path, class: "dropdown-item" %>
+      
+
               <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>

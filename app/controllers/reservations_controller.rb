@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :set_reservation, only: :destroy
+  before_action :set_reservation, only: [:destroy]
   before_action :set_accessory, only: %i[new create]
 
   def show; end
@@ -25,7 +25,7 @@ class ReservationsController < ApplicationController
   end
 
   def mine
-    @reservations = policy_scope(Reservation).where(params[current_user.id])
+    @reservations = policy_scope(Reservation).where(params[current_user])
   end
 
   def destroy
