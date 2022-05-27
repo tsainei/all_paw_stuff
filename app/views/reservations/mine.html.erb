@@ -1,8 +1,17 @@
-<div class= "container m-3 p-3">
-  <% @reservations.each do |reservation|%>
-    <%= reservation.start_date %>
-    <%= reservation.end_date %>
-    <%= reservation.total_price %>
-    <%= reservation.accessory.user.email %>
-  <% end %>
+<div class="container m-3 mx-auto">
+  <div class="row">
+    <div class="media">
+      <div class="media-body">
+        <% @reservations.each do |reservation|%>
+          <div class= "col">
+           <img class="mr-3" src="..." alt="Generic placeholder image">
+            <%= reservation.start_date %>
+            <%= reservation.end_date %>
+            <%= reservation.total_price %>
+            <%= reservation.accessory.user.email %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

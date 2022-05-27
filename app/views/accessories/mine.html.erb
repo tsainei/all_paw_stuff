@@ -1,6 +1,15 @@
-<div class= "container m-3 p-3">
-  <% @accessories.each do |accessory|%>
-    <%= accessory.name %>
-    <%= accessory.price %>
-  <% end %>
+<div class="container m-3 mx-auto">
+  <div class="row">
+    <div class="media">
+      <div class="media-body">
+        <% @accessories.each do |accessory|%>
+         <div class= "col">
+              <img class="mr-3" src="..." alt="Generic placeholder image">
+          <%= accessory.name %>
+          <%= accessory.price %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
