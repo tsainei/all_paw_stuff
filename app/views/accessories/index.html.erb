@@ -1,40 +1,50 @@
 <div class="container m-3 mx-auto">
   <h1 class="text-center">Paw Accessories</h1>
   <div class="row">
-    <% @accessories.each do |accessory| %>
-      <div class= "col">
-        <div class="card-trip mt-4 p-3" style="width: 18rem;">
-          <% if accessory.photo.present? %>
-            <%= cl_image_tag(accessory.photo.key, width: 400, height: 300, crop: :fit) %>
-          <% end %>
-          <div class="card-trip-infos">
-            <div>
-              <h2>Item: <%= accessory.name %></h2>
+    <div class= "col">
+      <div class="row">
 
-              <%# <p>Description: <%= accessory.description </p> %>
+        <% @accessories.in_groups_of(2) do |accessories| %>
+          <% accessories.each do |accessory| %>
+            <% next if accessory.blank? %>
+            <div class="col">
+              <div class="card-trip mt-4 p-3" style="width: 18rem;">
+                <% if accessory.photo.present? %>
+                  <%= cl_image_tag(accessory.photo.key, width: 400, height: 300, crop: :fit) %>
+                <% end %>
+                <div class="card-trip-infos">
+                  <div>
+                    <h2>Item: <%= accessory.name %></h2>
 
+                    <%# <p>Description: <%= accessory.description </p> %>
+
+                  </div>
+                  <h2 class="card-trip-pricing"><%= accessory.price %>CHF/day</h2>
+
+                </div>
+
+                <%= link_to 'More info', accessory_path(accessory), class: "btn btn-warning mt-1"  %>
+
+                <% if policy(accessory).edit? %>
+                  <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
+                  <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
+                <% end %>
+              </div>
             </div>
-            <h2 class="card-trip-pricing"><%= accessory.price %>CHF/day</h2>
-
-          </div>
-
-          <%= link_to 'More info', accessory_path(accessory), class: "btn btn-warning mt-1"  %>
-
-          <% if policy(accessory).edit? %>
-            <%= link_to "Edit", edit_accessory_path(accessory), class: "btn btn-warning mt-1" %>
-            <%= link_to "Remove", accessory_path(accessory), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-warning mt-1' %>
           <% end %>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
 
 
-<br>
+
+
+    <br>
 
     <div class= "col mt-4 position-sticky" style="width: 100%; height: 600px;"
         data-controller="mapbox"
         data-mapbox-markers-value="<%= @markers.to_json %>"
         data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  </div>
-</div>
+  </div> <%# row %>
+</div> <%#  container %>
